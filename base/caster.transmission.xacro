@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!--
+
+  Copyright (c) 2011-2014, PAL Robotics, S.L.
+  All rights reserved.
+
+  This work is licensed under the Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported License.
+  To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/3.0/ or send a letter to
+  Creative Commons, 444 Castro Street, Suite 900, Mountain View, California, 94041, USA.
+-->
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <!-- Wheel transmission -->
+  <xacro:macro name="caster_transmission" params="side">
+    <transmission name="caster_${side}_1_trans">
+      <type>transmission_interface/SimpleTransmission</type>
+      <actuator name="caster_${side}_1_motor" >
+        <mechanicalReduction>1.0</mechanicalReduction>
+      </actuator>
+      <joint name="caster_${side}_1_joint" >
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      </joint>
+    </transmission>
+    <transmission name="caster_${side}_2_trans">
+      <type>transmission_interface/SimpleTransmission</type>
+      <actuator name="caster_${side}_2_motor" >
+        <mechanicalReduction>1.0</mechanicalReduction>
+      </actuator>
+      <joint name="caster_${side}_2_joint" >
+        <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+      </joint>
+    </transmission>
+  </xacro:macro>
+
+</robot>
